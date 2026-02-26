@@ -1,3 +1,51 @@
+# Very Simple Python DevOps Demo
+
+This is a tiny Python web service you can use to practice DevOps basics:
+
+- Creating and activating a virtual environment
+- Installing dependencies
+- Running tests
+- Building and running a Docker container
+
+## 1. Run locally (no Docker)
+
+```bash
+python -m venv .venv
+.\.venv\Scripts\activate  # on Windows
+
+pip install -r requirements.txt
+
+set PORT=8000            # PowerShell: $env:PORT=8000
+set APP_NAME=devops-demo-app  # PowerShell: $env:APP_NAME="devops-demo-app"
+
+python app.py
+```
+
+Then open:
+
+- `http://localhost:8000/` – main endpoint
+- `http://localhost:8000/health` – health check
+
+## 2. Run tests
+
+```bash
+pytest
+```
+
+## 3. Build and run with Docker
+
+```bash
+docker build -t devops-demo-app .
+
+docker run -p 8000:8000 devops-demo-app
+```
+
+You can override environment variables:
+
+```bash
+docker run -p 8000:8000 -e PORT=8000 -e APP_NAME="my-devops-app" devops-demo-app
+```
+
 # Professional Portfolio Website - Brahma Raj Joshi
 
 A modern, responsive portfolio website showcasing professional experience, skills, certifications, and contact information.
