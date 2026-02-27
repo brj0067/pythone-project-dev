@@ -34,5 +34,7 @@ jobs:
           ruff check .
 
       - name: Run tests
-        run: |
-          pytest -q
+  env:
+    PYTHONPATH: .
+  run: |
+    pytest -q
